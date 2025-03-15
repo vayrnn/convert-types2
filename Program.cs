@@ -1,32 +1,33 @@
+using System;
+
 class Program
 {
     static void Main()
     {
-        int intValue = 42;
-        double doubleValue = 3.14159;
-        bool boolValue = true;
-        DateTime dateTimeValue = DateTime.Now;
+        int number = 123;
+        bool flag = true;
+        string? nullableString = null;
+        object? nullObject = null;
 
-        string intString = intValue.ToString();
-        string doubleString = doubleValue.ToString();
-        string boolString = boolValue.ToString();
-        string dateTimeString = dateTimeValue.ToString();
+        Console.WriteLine("Using Convert.ToString():");
+        Console.WriteLine(Convert.ToString(number));
+        Console.WriteLine(Convert.ToString(flag));
+        Console.WriteLine(Convert.ToString(nullableString));
+        Console.WriteLine(Convert.ToString(nullObject));
 
-        string intConvertString = Convert.ToString(intValue);
-        string doubleConvertString = Convert.ToString(doubleValue);
-        string boolConvertString = Convert.ToString(boolValue);
-        string dateTimeConvertString = Convert.ToString(dateTimeValue);
+        Console.WriteLine("\nUsing ToString() with null check:");
+        if (nullableString != null)
+        {
+            Console.WriteLine(nullableString.ToString());
+        }
+        else
+        {
+            Console.WriteLine("nullableString is null");
+        }
 
-        Console.WriteLine("Using ToString():");
-        Console.WriteLine("int: " + intString);
-        Console.WriteLine("double: " + doubleString);
-        Console.WriteLine("bool: " + boolString);
-        Console.WriteLine("DateTime: " + dateTimeString);
+        Console.WriteLine("\nUsing ?. operator:");
+        Console.WriteLine(nullableString?.ToString() ?? "nullableString is null");
 
-        Console.WriteLine("\nUsing Convert.ToString():");
-        Console.WriteLine("int: " + intConvertString);
-        Console.WriteLine("double: " + doubleConvertString);
-        Console.WriteLine("bool: " + boolConvertString);
-        Console.WriteLine("DateTime: " + dateTimeConvertString);
+        Console.WriteLine(nullObject?.ToString() ?? "nullObject is null");
     }
 }
